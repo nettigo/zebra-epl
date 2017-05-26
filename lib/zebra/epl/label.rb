@@ -8,7 +8,7 @@ module Zebra
       class PrintSpeedNotInformedError < StandardError; end
 
       attr_writer :copies
-      attr_reader :elements, :tempfile
+      attr_reader :elements, :tempfile, :clear
       attr_accessor :width, :length, :gap, :print_speed, :print_density
 
       def initialize(options = {})
@@ -33,6 +33,10 @@ module Zebra
 
       def copies
         @copies || 1
+      end
+
+      def clear
+        @elements = []
       end
 
       def <<(element)
